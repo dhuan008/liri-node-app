@@ -1,0 +1,8 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dhuan008/liri-node-app.git",
+  "author": "David <daveshuang@gmail.com>",
+  "license": "MIT"
+}
