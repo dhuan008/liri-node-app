@@ -13,7 +13,7 @@ let param = process.argv[3];
 const showMovieInfo = queryUrl => {
     axios.get(queryUrl)
         .then(
-            function (response, error) {
+            (response, error) => {
                 error ? console.log(error)
                     : param === undefined ? console.log(`If you haven't watched "Mr. Nobody", then you should: <http://www.imdb.com/title/tt0485947/>\nIt's on Netflix!`)
                         : (
@@ -51,20 +51,20 @@ const showSongInfo = param => {
             query: param,
             limit: '1'
         },
-        function (err, data) {
+        (err, data) => {
             err ? console.log(err) : (
                 songs = data.tracks.items,
                 console.log('============SONG INFO============'),
-                console.log(`Song name: ${songs[0].name}`),
-                console.log(`Preview song: ${songs[0].preview_url}`),
+                console.log(`Song Name: ${songs[0].name}`),
+                console.log(`Preview Link: ${songs[0].preview_url}`),
                 console.log(`Album: ${songs[0].album.name}`),
-                console.log(`Artist(s): ${songs[0].artists[0].name}`),
+                console.log(`Artist: ${songs[0].artists[0].name}`),
                 console.log('================================='),
                 fs.appendFileSync('log.txt', '============SONG INFO============\n'),
-                fs.appendFileSync('log.txt', `song name: ${songs[0].name}\n`),
-                fs.appendFileSync('log.txt', `preview song: ${songs[0].preview_url}\n`),
-                fs.appendFileSync('log.txt', `album: ${songs[0].album.name}\n`),
-                fs.appendFileSync('log.txt', `artist(s): ${songs[0].artists[0].name}\n`),
+                fs.appendFileSync('log.txt', `Song Name: ${songs[0].name}\n`),
+                fs.appendFileSync('log.txt', `Preview Link: ${songs[0].preview_url}\n`),
+                fs.appendFileSync('log.txt', `Album: ${songs[0].album.name}\n`),
+                fs.appendFileSync('log.txt', `Artist: ${songs[0].artists[0].name}\n`),
                 fs.appendFileSync('log.txt', '=================================\n\n')
             );
         }
@@ -72,7 +72,7 @@ const showSongInfo = param => {
 };
 
 // Bands in town
-function showConcertInfo(queryConcertUrl) {
+const showConcertInfo = queryConcertUrl => {
     axios.get(queryConcertUrl)
         .then(
             (response, error) => {
@@ -93,8 +93,8 @@ function showConcertInfo(queryConcertUrl) {
 }
 
 // Read from text file
-function readTxtFile() {
-    fs.readFile("random.txt", "utf8", function (error, data) {
+const readTxtFile = () => {
+    fs.readFile("random.txt", "utf8", (error, data) => {
         error ? console.log(error) : (
             // Split data from file
             data = data.split(","),
@@ -108,7 +108,7 @@ function readTxtFile() {
 }
 
 // Selects which query to run
-function switchStatements(option, param) {
+const switchStatements = (option, param) => {
     switch (option) {
         case 'movie-this':
             const queryUrl = `http://www.omdbapi.com/?t=${param}&y=&plot=short&apikey=trilogy`;
