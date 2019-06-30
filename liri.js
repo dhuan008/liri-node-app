@@ -44,7 +44,9 @@ const showMovieInfo = (queryUrl, param) => {
                             fs.appendFileSync('log.txt', `Language of the movie is: ${response.data.Language}\n`),
                             fs.appendFileSync('log.txt', `Plot of the movie is: ${response.data.Plot}\n`),
                             fs.appendFileSync('log.txt', `Actors in the movie are: ${response.data.Actors}\n`),
-                            fs.appendFileSync('log.txt', '==================================\n\n')
+                            fs.appendFileSync('log.txt', '==================================\n\n'),
+                            // Run search again
+                            selectSearch()
                         );
             }
         )
@@ -75,7 +77,9 @@ const showSongInfo = param => {
                 fs.appendFileSync('log.txt', `Preview Link: ${songs[0].preview_url}\n`),
                 fs.appendFileSync('log.txt', `Album: ${songs[0].album.name}\n`),
                 fs.appendFileSync('log.txt', `Artist: ${songs[0].artists[0].name}\n`),
-                fs.appendFileSync('log.txt', '=================================\n\n')
+                fs.appendFileSync('log.txt', '=================================\n\n'),
+                // Run search again
+                selectSearch()
             );
         }
     );
@@ -97,7 +101,9 @@ const showConcertInfo = queryConcertUrl => {
                         fs.appendFileSync('log.txt', `Name of the venue: ${response.data[0].venue.name}\n`),
                         fs.appendFileSync('log.txt', `Venue location: ${response.data[0].venue.city}\n`),
                         fs.appendFileSync('log.txt', `Date of the event: ${moment(response.data[0].datetime).format("MM/DD/YYYY")}\n`),
-                        fs.appendFileSync('log.txt', '====================================\n\n')
+                        fs.appendFileSync('log.txt', '====================================\n\n'),
+                        // Run search again
+                        selectSearch()
                     );
             });
 }
@@ -134,6 +140,9 @@ const optionPicker = (option, param) => {
         case 'do-what-it-says':
             readTxtFile();
             break;
+        case 'exit':
+            console.log('Thanks for trying me out! Have a good day!');
+            break;
         default:
             console.log('Invalid Option');
     }
@@ -147,7 +156,7 @@ const selectSearch = () => {
             type: 'list',
             message: 'Pick a option: ',
             name: 'choice',
-            choices: ['movie-this', 'spotify-this-song', 'concert-this', 'do-what-it-says']
+            choices: ['movie-this', 'spotify-this-song', 'concert-this', 'do-what-it-says', 'exit']
         }
     ]).then(response => {
         searchType(response.choice);
@@ -156,7 +165,7 @@ const selectSearch = () => {
 
 // Asks user for search term
 const searchType = (choice) => {
-    (choice === 'do-what-it-says') ? optionPicker(choice)
+    (choice === 'do-what-it-says' || choice == 'exit') ? optionPicker(choice)
         : (
             inquirer.prompt([
                 {
