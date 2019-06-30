@@ -37,10 +37,10 @@ The user will be prompted with the following:
   spotify-this-song
   concert-this
   do-what-it-says
-
+  exit
 ```
 
-After selecting a option the user will be presented with the following prompt:
+If the user selects exit the application will end, if the user slects do-what-it-says the application will run a special command described in the special commands section below, otherwise the user will be presented with the following prompt:
 
 ```
 ? Enter a search term:
@@ -83,6 +83,8 @@ Venue location: Glasgow
 Date of the event: 10/04/2019
 ====================================
 ```
+
+Output is also saved to a **log.txt** file. The program repeats until terminated or the user selects exit.
 
 #### Special Commands
 The `do-what-it-says` option displays search results loaded from a text file in the same directory labeled `random.txt` .

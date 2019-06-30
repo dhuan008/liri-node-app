@@ -209,3 +209,43 @@ Album: Good Girl Gone Bad: Reloaded
 Artist: Rihanna
 =================================
 
+============MOVIE INFO============
+Title of the movie is: Shrek
+Year the movie came out is: 2001
+Rotten Tomatoes Rating of Shrek is: 88%
+Country where the movie was produced is: USA
+Language of the movie is: English
+Plot of the movie is: A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back.
+Actors in the movie are: Mike Myers, Eddie Murphy, Cameron Diaz, John Lithgow
+==================================
+
+============MOVIE INFO============
+Title of the movie is: Shrek
+Year the movie came out is: 2001
+Rotten Tomatoes Rating of Shrek is: 88%
+Country where the movie was produced is: USA
+Language of the movie is: English
+Plot of the movie is: A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back.
+Actors in the movie are: Mike Myers, Eddie Murphy, Cameron Diaz, John Lithgow
+==================================
+
+============SONG INFO============
+Song Name: Old Town Road - Remix
+Preview Link: https://p.scdn.co/mp3-preview/d94ec2ebe62fd52cf038760f57c251c145346bb2?cid=688e9fbd971f461189a0d3275b315274
+Album: Old Town Road
+Artist: Lil Nas X
+=================================
+
+============CONCERT INFO============
+Name of the venue: The Glad Cafe C.I.C
+Venue location: Glasgow
+Date of the event: 10/04/2019
+====================================
+
+============SONG INFO============
+Song Name: I Want It That Way
+Preview Link: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=688e9fbd971f461189a0d3275b315274
+Album: The Hits--Chapter One
+Artist: Backstreet Boys
+=================================
+
