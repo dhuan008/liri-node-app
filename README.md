@@ -11,6 +11,7 @@ This is a application that allows users to look up information on music, concert
 Ex.
 ``
 yarn install
+``
 npm install
 ``
 
