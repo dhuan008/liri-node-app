@@ -3,7 +3,7 @@
 This is a application that allows users to look up information on music, concerts, and movies by selecting options from a list then typing in a search term. This program runs in CLI
 
 ### Prerequisties
-- Node.js and a package manager
+- Node.js and a package manager installed to a terminal
 
 ### Dependencies
 - Use yarn or your preferred package manager to install dependencies

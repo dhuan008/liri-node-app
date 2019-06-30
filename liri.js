@@ -1,5 +1,7 @@
+// Module to load enviromental variables
 require('dotenv').config();
 
+// Requires
 const keys = require('./keys');
 const Spotify = require('node-spotify-api');
 const axios = require('axios');
@@ -7,10 +9,17 @@ const moment = require('moment');
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+// Global Variables
 const spotify = new Spotify(keys.spotify);
 //let option = process.argv[2];
 //let param = process.argv[3];
 
+
+// ============
+// Functions
+// ============
+
+// OMDB
 const showMovieInfo = (queryUrl, param) => {
     axios.get(queryUrl)
         .then(
@@ -162,5 +171,7 @@ const searchType = (choice) => {
 }
 
 
+// ============
 // Starts program
+// ============
 selectSearch();
