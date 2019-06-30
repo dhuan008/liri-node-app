@@ -40,7 +40,7 @@ The user will be prompted with the following:
   exit
 ```
 
-If the user selects exit the application will end, if the user slects do-what-it-says the application will run a special command described in the special commands section below, otherwise the user will be presented with the following prompt:
+If the user selects *exit* the application will end, if the user selects *do-what-it-says* the application will run a special command described in the special commands section below, otherwise the user will be presented with the following prompt:
 
 ```
 ? Enter a search term:
