@@ -130,7 +130,7 @@ const optionPicker = (option, param) => {
     }
 }
 
-// 
+// Asks user for tpye of search
 const selectSearch = () => {
     console.log('\n============SEARCH============');
     inquirer.prompt([
@@ -145,7 +145,7 @@ const selectSearch = () => {
     });
 }
 
-//
+// Asks user for search term
 const searchType = (choice) => {
     (choice === 'do-what-it-says') ? optionPicker(choice)
         : (
@@ -162,5 +162,5 @@ const searchType = (choice) => {
 }
 
 
-// 
+// Starts program
 selectSearch();
