@@ -25,7 +25,16 @@ const showMovieInfo = queryUrl => {
                             console.log(`Language of the movie is: ${response.data.Language}`),
                             console.log(`Plot of the movie is: ${response.data.Plot}`),
                             console.log(`Actors in the movie are: ${response.data.Actors}`),
-                            console.log('==================================')
+                            console.log('=================================='),
+                            fs.appendFileSync('log.txt', '============MOVIE INFO============\n'),
+                            fs.appendFileSync('log.txt', `Title of the movie is: ${response.data.Title}\n`),
+                            fs.appendFileSync('log.txt', `Year the movie came out is: ${response.data.Year}\n`),
+                            fs.appendFileSync('log.txt', `Rotten Tomatoes Rating of ${response.data.Title} is: ${response.data.Ratings[1].Value}\n`),
+                            fs.appendFileSync('log.txt', `Country where the movie was produced is: ${response.data.Country}\n`),
+                            fs.appendFileSync('log.txt', `Language of the movie is: ${response.data.Language}\n`),
+                            fs.appendFileSync('log.txt', `Plot of the movie is: ${response.data.Plot}\n`),
+                            fs.appendFileSync('log.txt', `Actors in the movie are: ${response.data.Actors}\n`),
+                            fs.appendFileSync('log.txt', '==================================\n\n')
                         );
             }
         )
@@ -56,7 +65,7 @@ const showSongInfo = param => {
                 fs.appendFileSync('log.txt', `preview song: ${songs[0].preview_url}\n`),
                 fs.appendFileSync('log.txt', `album: ${songs[0].album.name}\n`),
                 fs.appendFileSync('log.txt', `artist(s): ${songs[0].artists[0].name}\n`),
-                fs.appendFileSync('log.txt', '=================================\n')
+                fs.appendFileSync('log.txt', '=================================\n\n')
             );
         }
     );
@@ -65,11 +74,22 @@ const showSongInfo = param => {
 // Bands in town
 function showConcertInfo(queryConcertUrl) {
     axios.get(queryConcertUrl)
-        .then((response) => {
-            console.log(response.data[0].venue.name);
-            console.log(response.data[0].venue.city);
-            console.log(moment(response.data[0].datetime).format("MM DD YYYY"));
-        });
+        .then(
+            (response, error) => {
+                error ? console.log("Concert not found")
+                    : (
+                        console.log('============CONCERT INFO============'),
+                        console.log(`Name of the venue: ${response.data[0].venue.name}`),
+                        console.log(`Venue location: ${response.data[0].venue.city}`),
+                        console.log(`Date of the event: ${moment(response.data[0].datetime).format("MM/DD/YYYY")}`),
+                        console.log('===================================='),
+                        fs.appendFileSync('log.txt', '============CONCERT INFO============\n'),
+                        fs.appendFileSync('log.txt', `Name of the venue: ${response.data[0].venue.name}\n`),
+                        fs.appendFileSync('log.txt', `Venue location: ${response.data[0].venue.city}\n`),
+                        fs.appendFileSync('log.txt', `Date of the event: ${moment(response.data[0].datetime).format("MM/DD/YYYY")}\n`),
+                        fs.appendFileSync('log.txt', '====================================\n\n')
+                    );
+            });
 }
 
 // Read from text file
