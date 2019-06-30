@@ -18,8 +18,7 @@ const showMovieInfo = queryUrl => {
                     console.log(error);
                 }
                 else if (param === undefined) {
-                    console.log(`If you haven't watched "Mr. Nobody", then you should: <http://www.imdb.com/title/tt0485947/>`)
-                    console.log(`\nIt's on Netflix!`);
+                    console.log(`If you haven't watched "Mr. Nobody", then you should: <http://www.imdb.com/title/tt0485947/>\nIt's on Netflix!`);
                 }
                 else {
                     console.log(`Title of the movie is: ${response.data.Title}`);
