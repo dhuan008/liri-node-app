@@ -9,14 +9,18 @@ This is a application that allows users to look up information on music, concert
 - Use yarn or your preferred package manager to install dependencies
 
 Ex.
+``
 yarn install
 npm install
+``
 
 ## Running the App
 - In your terminal, run node on liri.js to start the app
 
 Ex.
+``
 node liri.js
+``
 
 ### Demo: 
 
@@ -81,7 +85,7 @@ Date of the event: 10/04/2019
 #### Special Commands
 The `do-what-it-says` option displays search results loaded from a text file in the same directory labeled `random.txt` .
 
-## Built with
+## Technologies Used
 - Node.js
 - Yarn
 - Axios
@@ -91,6 +95,7 @@ The `do-what-it-says` option displays search results loaded from a text file in 
 - Moments.js
 - Inquirer
 - fs
+- dotenv
 
 ## Syntax and Conventions
-Javascript es6
+- Javascript es6
