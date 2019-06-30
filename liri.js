@@ -17,13 +17,15 @@ const showMovieInfo = queryUrl => {
                 error ? console.log(error)
                     : param === undefined ? console.log(`If you haven't watched "Mr. Nobody", then you should: <http://www.imdb.com/title/tt0485947/>\nIt's on Netflix!`)
                         : (
+                            console.log('============MOVIE INFO============'),
                             console.log(`Title of the movie is: ${response.data.Title}`),
                             console.log(`Year the movie came out is: ${response.data.Year}`),
                             console.log(`Rotten Tomatoes Rating of ${response.data.Title} is: ${response.data.Ratings[1].Value}`),
                             console.log(`Country where the movie was produced is: ${response.data.Country}`),
                             console.log(`Language of the movie is: ${response.data.Language}`),
                             console.log(`Plot of the movie is: ${response.data.Plot}`),
-                            console.log(`Actors in the movie are: ${response.data.Actors}`)
+                            console.log(`Actors in the movie are: ${response.data.Actors}`),
+                            console.log('==================================')
                         );
             }
         )
@@ -44,17 +46,17 @@ const showSongInfo = param => {
             err ? console.log(err) : (
                 songs = data.tracks.items,
                 console.log('============SONG INFO============'),
-                fs.appendFileSync('log.txt', '============SONG INFO============\n'),
                 console.log(`Song name: ${songs[0].name}`),
-                fs.appendFileSync('log.txt', `song name: ${songs[0].name}\n`),
                 console.log(`Preview song: ${songs[0].preview_url}`),
-                fs.appendFileSync('log.txt', `preview song: ${songs[0].preview_url}\n`),
                 console.log(`Album: ${songs[0].album.name}`),
-                fs.appendFileSync('log.txt', `album: ${songs[0].album.name}\n`),
                 console.log(`Artist(s): ${songs[0].artists[0].name}`),
+                console.log('================================='),
+                fs.appendFileSync('log.txt', '============SONG INFO============\n'),
+                fs.appendFileSync('log.txt', `song name: ${songs[0].name}\n`),
+                fs.appendFileSync('log.txt', `preview song: ${songs[0].preview_url}\n`),
+                fs.appendFileSync('log.txt', `album: ${songs[0].album.name}\n`),
                 fs.appendFileSync('log.txt', `artist(s): ${songs[0].artists[0].name}\n`),
-                console.log('============================='),
-                fs.appendFileSync('log.txt', '=============================')
+                fs.appendFileSync('log.txt', '=================================\n')
             );
         }
     );
