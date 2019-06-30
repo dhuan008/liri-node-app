@@ -2,20 +2,21 @@ require('dotenv').config();
 
 const keys = require('./keys');
 const Spotify = require('node-spotify-api');
-const fs = require('fs');
 const axios = require('axios');
 const moment = require('moment');
+const fs = require('fs');
+const inquirer = require('inquirer');
 
 const spotify = new Spotify(keys.spotify);
-let option = process.argv[2];
-let param = process.argv[3];
+//let option = process.argv[2];
+//let param = process.argv[3];
 
-const showMovieInfo = queryUrl => {
+const showMovieInfo = (queryUrl, param) => {
     axios.get(queryUrl)
         .then(
             (response, error) => {
                 error ? console.log(error)
-                    : param === undefined ? console.log(`If you haven't watched "Mr. Nobody", then you should: <http://www.imdb.com/title/tt0485947/>\nIt's on Netflix!`)
+                    : (param === undefined) ? console.log(`If you haven't watched "Mr. Nobody", then you should: <http://www.imdb.com/title/tt0485947/>\nIt's on Netflix!`)
                         : (
                             console.log('============MOVIE INFO============'),
                             console.log(`Title of the movie is: ${response.data.Title}`),
@@ -102,17 +103,17 @@ const readTxtFile = () => {
             param = data[1],
 
             // Call query on provided params
-            switchStatements(option, param)
+            optionPicker(option, param)
         )
     });
 }
 
 // Selects which query to run
-const switchStatements = (option, param) => {
+const optionPicker = (option, param) => {
     switch (option) {
         case 'movie-this':
             const queryUrl = `http://www.omdbapi.com/?t=${param}&y=&plot=short&apikey=trilogy`;
-            showMovieInfo(queryUrl)
+            showMovieInfo(queryUrl, param);
             break;
         case 'spotify-this-song':
             showSongInfo(param);
@@ -129,5 +130,37 @@ const switchStatements = (option, param) => {
     }
 }
 
-// Function call
-switchStatements(option, param);
+// 
+const selectSearch = () => {
+    console.log('\n============SEARCH============');
+    inquirer.prompt([
+        {
+            type: 'list',
+            message: 'Pick a option: ',
+            name: 'choice',
+            choices: ['movie-this', 'spotify-this-song', 'concert-this', 'do-what-it-says']
+        }
+    ]).then(response => {
+        searchType(response.choice);
+    });
+}
+
+//
+const searchType = (choice) => {
+    (choice === 'do-what-it-says') ? optionPicker(choice)
+        : (
+            inquirer.prompt([
+                {
+                    type: 'string',
+                    name: 'term',
+                    message: 'Enter a search term: '
+                }
+            ]).then(response => {
+                optionPicker(choice, response.term);
+            })
+        )
+}
+
+
+// 
+selectSearch();
